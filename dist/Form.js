@@ -154,37 +154,31 @@ export function Form(props) {
     // fn props:
     const propValidation = usePropValidation(props);
     // jsx:
-    return (<Content 
-    // other props:
-    {...props} 
-    // semantics:
-    semanticTag={props.semanticTag ?? 'form'} semanticRole={props.semanticRole ?? 'form'} 
-    // variants:
-    mild={props.mild ?? true} 
-    // classes:
-    mainClass={props.mainClass ?? sheet.main} stateClasses={[...(props.stateClasses ?? []),
+    return (React.createElement(Content, { ...props, 
+        // semantics:
+        semanticTag: props.semanticTag ?? 'form', semanticRole: props.semanticRole ?? 'form', 
+        // variants:
+        mild: props.mild ?? true, 
+        // classes:
+        mainClass: props.mainClass ?? sheet.main, stateClasses: [...(props.stateClasses ?? []),
             validInvalidState.class,
-        ]} 
-    // validations:
-    elmRef={(elm) => {
+        ], 
+        // validations:
+        elmRef: (elm) => {
             setRef(props.elmRef, elm);
             if (elm) {
                 formValidator.handleInit(elm);
             } // if
-        }} onChange={(e) => {
+        }, onChange: (e) => {
             props.onChange?.(e);
             // validations:
             formValidator.handleChange(e.currentTarget);
-        }} 
-    // events:
-    onAnimationEnd={(e) => {
+        }, 
+        // events:
+        onAnimationEnd: (e) => {
             props.onAnimationEnd?.(e);
             // validations:
             validInvalidState.handleAnimationEnd(e);
-        }}>
-            {props.children && <ValidationProvider {...propValidation}>
-                {props.children}
-            </ValidationProvider>}
-        </Content>);
+        } }, props.children && React.createElement(ValidationProvider, { ...propValidation }, props.children)));
 }
 export { Form as default };
