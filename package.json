@@ -1,6 +1,6 @@
 {
   "name": "@nodestrap/form",
-  "version": "4.0.4",
+  "version": "4.0.5",
   "description": "Represents a document section containing interactive controls for submitting.",
   "type": "module",
   "main": "dist/Form.js",
@@ -26,15 +26,15 @@
   },
   "homepage": "https://github.com/nodestrap/form#readme",
   "dependencies": {
-    "@cssfn/css-config": "^1.0.4",
-    "@cssfn/cssfn": "^1.0.11",
+    "@cssfn/css-config": "^1.0.8",
+    "@cssfn/cssfn": "^1.0.12",
     "@cssfn/react-cssfn": "^1.0.11",
     "@nodestrap/basic": "^4.0.7",
-    "@nodestrap/content": "^4.0.9",
+    "@nodestrap/content": "^4.0.13",
     "@nodestrap/editable-control": "^4.0.7",
     "@nodestrap/utilities": "^4.0.3",
-    "@nodestrap/validations": "^4.0.4",
-    "@types/react": "^17.0.38",
+    "@nodestrap/validations": "^4.0.5",
+    "@types/react": "^17.0.42",
     "react": "^17.0.2"
   }
 }

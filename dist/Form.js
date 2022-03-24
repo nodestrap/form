@@ -18,7 +18,7 @@ usesGeneralProps, usesSuffixedProps, overwriteProps, } from '@cssfn/css-config';
 import { 
 // utilities:
 setRef, } from '@nodestrap/utilities';
-import { usePropValidation, ValidationProvider, } from '@nodestrap/validations';
+import { ValidationProvider, } from '@nodestrap/validations';
 // nodestrap components:
 import { 
 // hooks:
@@ -142,13 +142,16 @@ export const [cssProps, cssDecls, cssVals, cssConfig] = createCssConfig(() => {
     };
 }, { prefix: 'frm' });
 export function Form(props) {
+    // jsx:
+    return (React.createElement(ValidationProvider, { ...props },
+        React.createElement(FormInternal, { ...props })));
+}
+function FormInternal(props) {
     // styles:
     const sheet = useFormSheet();
     // states:
     const formValidator = useFormValidator(props.customValidator);
     const validInvalidState = useValidInvalidState(props, formValidator.validator);
-    // fn props:
-    const propValidation = usePropValidation(props);
     // jsx:
     return (React.createElement(Content, { ...props, 
         // semantics:
@@ -175,6 +178,6 @@ export function Form(props) {
             props.onAnimationEnd?.(e);
             // validations:
             validInvalidState.handleAnimationEnd(e);
-        } }, props.children && React.createElement(ValidationProvider, { ...propValidation }, props.children)));
+        } }, props.children));
 }
 export { Form as default };
